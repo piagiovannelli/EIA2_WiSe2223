@@ -10,7 +10,7 @@ Quellen: Aanya Khetarpal, Julia Befus, Paula Jordans
 
 
 //Programmstruktur implementieren
-namespace zufallsgedicht {
+namespace gedicht {
     //Arrays
     let s: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"];
     let p: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"];
@@ -32,9 +32,9 @@ namespace zufallsgedicht {
 
 
     function getVerse(_s: string[], _p: string[], _o: string[]): string {
-        let randoms: number = Math.floor(Math.random() * _s.length);
-        let randomp: number = Math.floor(Math.random() * _s.length);
-        let randomo: number = Math.floor(Math.random() * _s.length);
+        let randoms: number = Math.floor(Math.random());
+        let randomp: number = Math.floor(Math.random());
+        let randomo: number = Math.floor(Math.random());
 
         let verse: string = _s[randoms] + " " + _p[randomp] + " " + _o[randomo] + " .";
 
