@@ -1,3 +1,11 @@
+/* Aufgabe: L01 Zufallsgedicht
+Name: Pia Giovannelli
+Matrikel: 271245
+Datum: 12.10.2022
+Quellen: Aanya Khetarpal, Julia Befus, Paula Jordans, Havva Kilic
+*/
+
+
 namespace EventsInspector {
 
     window.addEventListener("load", handleLoad);
