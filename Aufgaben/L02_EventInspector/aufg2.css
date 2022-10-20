@@ -1,10 +1,10 @@
 html {
-    background-color: rgb(229, 205, 252);
+    background-color: rgb(140, 74, 74);
 }
 
 body {
     height: 100%;
-    background-color: rgb(242, 185, 230);
+    background-color: rgba(224, 36, 36, 0.622);
 }
 h1 {
     position: relative;
@@ -19,14 +19,14 @@ div {
 }
 
 #div0 {
-    background-color: rgb(202, 133, 239);
+    background-color: rgb(145, 108, 108);
     border-color: rgb(255, 255, 255);
     border-style: solid;
     margin-left: 10%;
 }
 
 #div1 {
-    background-color: rgb(194, 157, 245);
+    background-color: rgba(81, 60, 60, 0.51);
     border-color: rgb(255, 255, 255);
     border-style: solid;
     margin-left: 50%;  
