@@ -1,10 +1,9 @@
-/* Aufgabe: L01 Zufallsgedicht
+/* Aufgabe: L02 Event Inspector
 Name: Pia Giovannelli
 Matrikel: 271245
-Datum: 12.10.2022
+Datum: 20.10.2022
 Quellen: Aanya Khetarpal, Julia Befus, Paula Jordans, Havva Kilic
 */
-
 
 namespace EventsInspector {
 

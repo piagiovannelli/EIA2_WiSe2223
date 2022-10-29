@@ -1,0 +1,90 @@
+body {
+    background-color: rgb(246, 213, 213);
+    text-align: center;
+
+}
+
+h1 {
+    color: rgb(251, 251, 251);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    height: 100px;
+    margin: 0px;
+    padding-top: 60px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.wrapper {
+    text-align: center;
+    position: relative;
+    width: 1600px;
+    left: 52%;
+    transform: translateX(-50%);
+    border-color: black;
+    
+}
+
+.box {
+    background-color:rgb(180, 93, 93);
+    background-size: cover;
+}
+
+#counterItem {
+    color: rgb(58, 118, 124);
+}
+
+#add {
+   
+    height: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
+.divLabel {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.todoItem {
+    padding: 20px;
+    align-items: center;
+    background-color: white;
+    width: 364px;
+    height: 30px;
+    text-align: center;
+    position: relative;
+    left: 51%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    outline: none;
+}
+
+
+
+.checkBox {
+    cursor: pointer;
+}
+
+.container {
+
+    padding: 20px;
+    align-items: center;
+    background-color: rgba(165, 244, 189, 0.777);
+    width: 364px;
+    height: 30px;
+    position: relative;
+    left: 586px;
+    border: black;
+   
+    display: flex;
+    justify-content: space-between;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    outline: none;
+}
