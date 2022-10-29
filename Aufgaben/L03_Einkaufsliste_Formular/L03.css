@@ -1,13 +1,13 @@
 body {
-    background-color: rgb(246, 213, 213);
+    background-image: url(./Einkaufswagen.jpg);
     text-align: center;
 
 }
 
 h1 {
     color: rgb(251, 251, 251);
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
     height: 100px;
     margin: 0px;
     padding-top: 60px;
@@ -21,24 +21,35 @@ h2 {
 .wrapper {
     text-align: center;
     position: relative;
-    width: 1600px;
-    left: 52%;
+    left: 18%;
+    right: 25%;
+    background-color: rgb(250, 238, 250);
+   
+   
     transform: translateX(-50%);
-    border-color: black;
+    border: black solid;
+    height: 800px;
+    width: 450px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    text-align: center;
     
+   
 }
 
 .box {
-    background-color:rgb(180, 93, 93);
+    background-color:rgb(238, 194, 224);
     background-size: cover;
 }
 
 #counterItem {
-    color: rgb(58, 118, 124);
+    color: rgb(255, 255, 255);
 }
 
-#add {
-   
+#toDo {
+    width: 400px;
     height: 30px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
@@ -48,22 +59,6 @@ h2 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.todoItem {
-    padding: 20px;
-    align-items: center;
-    background-color: white;
-    width: 364px;
-    height: 30px;
-    text-align: center;
-    position: relative;
-    left: 51%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: space-between;
-    border-style: solid;
-    border-color: rgb(99, 99, 99);
-    outline: none;
-}
 
 
 
@@ -73,15 +68,15 @@ h2 {
 
 .container {
 
+   
     padding: 20px;
     align-items: center;
-    background-color: rgba(165, 244, 189, 0.777);
+    background-color: white;
     width: 364px;
     height: 30px;
     position: relative;
-    left: 586px;
-    border: black;
-   
+    left: 2.5%;
+  
     display: flex;
     justify-content: space-between;
     border-style: solid;

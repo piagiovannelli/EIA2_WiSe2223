@@ -3,7 +3,7 @@
  Name: <Aanya Khetarpal>
  Matrikel: <2711441>
  Datum: <29.10.2022>
- Quellen: <Aanya Khetarpal, Paula Jordans, Julia Befus, Havva Sümeyye Kilic>
+ Quellen: <Paula Jordans, Julia Befus, Aanya Khetarpal, Havva Sümeyye Kilic>
 */
 window.addEventListener("load", handleLoad);
 
