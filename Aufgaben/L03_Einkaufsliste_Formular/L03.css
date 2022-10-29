@@ -24,8 +24,6 @@ h2 {
     left: 18%;
     right: 25%;
     background-color: rgb(250, 238, 250);
-   
-   
     transform: translateX(-50%);
     border: black solid;
     height: 800px;
@@ -75,7 +73,7 @@ h2 {
     width: 364px;
     height: 30px;
     position: relative;
-    left: 2.5%;
+    left:3.2%;
   
     display: flex;
     justify-content: space-between;
