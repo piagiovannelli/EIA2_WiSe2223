@@ -3,7 +3,7 @@
  Name: Pia Giovannelli
  Matrikel: 271245
  Datum: 5.11.22
- Quellen: Paula Jordans, Julia Befus, Aanya Khetarpal, Havva Sümeyye Kilic
+ Quellen: Bastian Aberle, Paula Jordans, Julia Befus, Aanya Khetarpal, Havva Sümeyye Kilic
 */
 
 
