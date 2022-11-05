@@ -1,3 +1,10 @@
+/*
+ Aufgabe:L04_Einkaufsliste_Datenstruktur
+ Name: Pia Giovannelli
+ Matrikel: 271245
+ Datum: 5.11.22
+ Quellen: Paula Jordans, Julia Befus, Aanya Khetarpal, Havva Sümeyye Kilic
+*/
 var shoppinglistA04;
 (function (shoppinglistA04) {
     let item;

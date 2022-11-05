@@ -1,9 +1,9 @@
 /*
- Aufgabe:<L03, Einkaufsliste>
- Name: <Aanya Khetarpal>
- Matrikel: <2711441>
- Datum: <29.10.2022>
- Quellen: <Paula Jordans, Julia Befus, Aanya Khetarpal, Havva Sümeyye Kilic>
+ Aufgabe: L03_Einkaufsliste_Formular>
+ Name: Pia Giovannelli
+ Matrikel: 271245
+ Datum: 29.10.22
+ Quellen: Paula Jordans, Julia Befus, Aanya Khetarpal, Havva Sümeyye Kilic
 */
 window.addEventListener("load", handleLoad);
 
