@@ -128,8 +128,7 @@ namespace shoppinglistA04 {
         amountItems++;
     }
 
-    //Funktion zum löschen eines Eintrags -> nimmt hier ID von dem jeweiligen Trash Element und löscht damit die zugehörigen Felder
-    function deleteItem(_event: MouseEvent): void {
+    
         console.log("delete");
         let x: string = (_event.target as Element).id;
         let outputElementId: HTMLElement = document.getElementById(x);
@@ -140,13 +139,11 @@ namespace shoppinglistA04 {
         editElementId.remove();
     }
 
-    //Funktion zum überprüfen ob etwas gekauft wurde oder nicht (für die checkbox unten) <- Funktioniert noch nicht
     function checkboxNextPurchase(_event: MouseEvent): void {
         console.log("Checkbox Liste: Click -> checkboxNextPurchase()");
         
     }
 
-    //Funktion zum editieren von Einträgen
     function editEntry(): void {
         console.log("Edit click -> editEntry()");
     }
