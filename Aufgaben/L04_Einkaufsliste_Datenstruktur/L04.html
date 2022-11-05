@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shopping list</title>
+    <script src="data.js"></script>
+    <script src="L04.js"></script>
+    <script src="https://kit.fontawesome.com/4287d81834.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="L04.css">
+
+</head>
+
+<body>
+    <form>
+        <div class="container">
+            <h1>SHOPPINGLISTE</h1>
+            <h2>add new item</h2>
+
+
+            <fieldset id="fsItem">
+                <input class="item" type="text" name="Item" placeholder="item" required>
+            </fieldset>
+            <fieldset id="fsAmount">
+                <input class="amount" type="number" name="Amount" placeholder="amount" required>
+            </fieldset>
+            <fieldset id="fsDate">
+                <input class="date" type="date" name="Date" placeholder="date" required>
+            </fieldset>
+            <fieldset id="nextBuy">
+                <h3> buy next time? </h3>
+                <input class="nextBuy" type="checkbox" name="Checkbox">
+            </fieldset>
+            <fieldset id="fsComment">
+                <textarea class="comment" name="Area" rows="3" placeholder="comments"></textarea>
+            </fieldset>
+           
+
+
+
+            <div id="output">
+
+            </div>
+            <div id="check">
+
+            </div>
+
+
+    </form>
+
+</body>
+
+</html>

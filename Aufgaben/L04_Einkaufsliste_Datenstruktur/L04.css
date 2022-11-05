@@ -1,0 +1,120 @@
+.container {
+    border-style: solid;
+    height: 700px;
+    width: 390px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(234, 196, 226);
+    justify-content: center;
+    text-align: center;
+    float: left;
+}
+
+body {
+    font-family: Helvetica;
+    background-image: url(./Einkaufswagen\ Kopie.jpg);
+}
+
+h1 {
+    position: relative;
+    left: 65px;
+    top: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    border-width: 2px;
+    width: 250px;
+    height: 35px;
+}
+
+h2 {
+    font-size: small;
+    position: relative;
+    font-weight:500;
+    cursor: pointer;
+    top: 20px;
+    width: auto;
+    
+   
+   
+    
+}
+
+h2:hover {
+    transform: scale(1.15);
+    transition: 0.3s;
+    
+}
+
+h3 {
+    font-size: small;
+    position: relative;
+    top: -15px;
+    font-weight:500;
+}
+
+fieldset {
+    border: none;
+    position: relative;
+    top: 20px;
+}
+
+textarea {
+    width: 150px;
+}
+
+.item {
+    width: 150px;
+}
+
+.amount {
+    width: 150px;
+}
+
+#output {
+    position: relative;
+    left: 18px;
+    top: -20px;
+    text-align: center;
+    border-top: black solid;
+    border-top-style: dotted;
+    padding-top: 25px;
+    width: 350px;
+    height: 350px;
+    float:left;
+}
+
+i {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+i:hover {
+    transform: scale(1.15);
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: scale(1.15);
+    transition: 0.3s;
+}
+
+form {
+    display: grid;
+}
+
+.nextBuy {
+    position: relative;
+    top: -45px;
+    left: 68px;
+}
+
+.comment {
+    position: relative;
+    top: -50px;
+}
+
+
+
+input[type=checkbox] {
+    transform: scale(1.5);
+}
