@@ -128,7 +128,7 @@ namespace shoppinglistA04 {
         amountItems++;
     }
 
-    
+    function deleteItem(_event: MouseEvent): void {
         console.log("delete");
         let x: string = (_event.target as Element).id;
         let outputElementId: HTMLElement = document.getElementById(x);

@@ -3,7 +3,7 @@
  Name: Pia Giovannelli
  Matrikel: 271245
  Datum: 5.11.22
- Quellen: Paula Jordans, Julia Befus, Aanya Khetarpal, Havva Sümeyye Kilic
+ Quellen: Bastian Aberle, Paula Jordans, Julia Befus, Aanya Khetarpal, Havva Sümeyye Kilic
 */
 var shoppinglistA04;
 (function (shoppinglistA04) {
@@ -90,24 +90,19 @@ var shoppinglistA04;
         document.querySelector(".edit" + amountItems).addEventListener("click", editEntry);
         amountItems++;
     }
-    //Funktion zum löschen eines Eintrags -> nimmt hier ID von dem jeweiligen Trash Element und löscht damit die zugehörigen Felder
-    function deleteItem(_event) {
-        console.log("delete");
-        let x = _event.target.id;
-        let outputElementId = document.getElementById(x);
-        let editElementId = document.getElementById("edit" + x);
-        let checkboxElementId = document.getElementById("checkbox" + x);
-        checkboxElementId.remove();
-        outputElementId.remove();
-        editElementId.remove();
-    }
-    //Funktion zum überprüfen ob etwas gekauft wurde oder nicht (für die checkbox unten) <- Funktioniert noch nicht
-    function checkboxNextPurchase(_event) {
-        console.log("Checkbox Liste: Click -> checkboxNextPurchase()");
-    }
-    //Funktion zum editieren von Einträgen
-    function editEntry() {
-        console.log("Edit click -> editEntry()");
-    }
+    console.log("delete");
+    let x = _event.target.id;
+    let outputElementId = document.getElementById(x);
+    let editElementId = document.getElementById("edit" + x);
+    let checkboxElementId = document.getElementById("checkbox" + x);
+    checkboxElementId.remove();
+    outputElementId.remove();
+    editElementId.remove();
 })(shoppinglistA04 || (shoppinglistA04 = {}));
+function checkboxNextPurchase(_event) {
+    console.log("Checkbox Liste: Click -> checkboxNextPurchase()");
+}
+function editEntry() {
+    console.log("Edit click -> editEntry()");
+}
 //# sourceMappingURL=L04.js.map
