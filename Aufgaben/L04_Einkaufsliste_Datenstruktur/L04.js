@@ -90,19 +90,21 @@ var shoppinglistA04;
         document.querySelector(".edit" + amountItems).addEventListener("click", editEntry);
         amountItems++;
     }
-    console.log("delete");
-    let x = _event.target.id;
-    let outputElementId = document.getElementById(x);
-    let editElementId = document.getElementById("edit" + x);
-    let checkboxElementId = document.getElementById("checkbox" + x);
-    checkboxElementId.remove();
-    outputElementId.remove();
-    editElementId.remove();
+    function deleteItem(_event) {
+        console.log("delete");
+        let x = _event.target.id;
+        let outputElementId = document.getElementById(x);
+        let editElementId = document.getElementById("edit" + x);
+        let checkboxElementId = document.getElementById("checkbox" + x);
+        checkboxElementId.remove();
+        outputElementId.remove();
+        editElementId.remove();
+    }
+    function checkboxNextPurchase(_event) {
+        console.log("Checkbox Liste: Click -> checkboxNextPurchase()");
+    }
+    function editEntry() {
+        console.log("Edit click -> editEntry()");
+    }
 })(shoppinglistA04 || (shoppinglistA04 = {}));
-function checkboxNextPurchase(_event) {
-    console.log("Checkbox Liste: Click -> checkboxNextPurchase()");
-}
-function editEntry() {
-    console.log("Edit click -> editEntry()");
-}
 //# sourceMappingURL=L04.js.map
