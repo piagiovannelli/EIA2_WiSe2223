@@ -8,7 +8,6 @@
 var shoppinglistA05;
 (function (shoppinglistA05) {
     window.addEventListener("load", handleLoad);
-    //lädt Liste und ruft loadData auf
     async function handleLoad() {
         let button = document.querySelector("button[type=button]");
         let response = await fetch("data.json");
@@ -18,19 +17,16 @@ var shoppinglistA05;
         clearInputs();
         loadData(data);
     }
-    //managed die Buttons
     function handleButton() {
         loadInput();
         sendData();
     }
-    //client austausch
     async function sendData() {
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
         await fetch("shoppinglist.html?" + query.toString());
         alert("Data sent");
     }
-    //lädt die Daten aus dem JSON Array in Variablen und gibt sie an loadItem weiter
     function loadData(data) {
         for (let index = 0; index < data.length; index++) {
             let item = data[index].item;
@@ -41,14 +37,12 @@ var shoppinglistA05;
             loadItem(item, amount, date, comment, purchase);
         }
     }
-    //lädt den Input in den Feldern in Variablen und übergibt es dann zur loadItem Funktion
     function loadInput() {
         let formData = new FormData(document.forms[0]);
         let item = formData.get("Item").toString();
         let amount = Number(formData.get("Amount"));
         let date = new Date().toLocaleDateString();
         let comment = formData.get("Area").toString();
-        //umwandlung nextPurchase von Input in string
         let purchaseCheckbox = formData.get("Checkbox");
         let purchase = "";
         if (purchaseCheckbox == null) {
@@ -57,12 +51,9 @@ var shoppinglistA05;
         else {
             purchase = " buy";
         }
-        //löscht Value von Inputs
         clearInputs();
-        //generiere nun einen neuen Eintrag
         loadItem(item, amount, date, comment, purchase);
     }
-    //Funktion zur generierung eines Item Felds im Output
     function loadItem(item, amount, date, comment, purchase) {
         let newDiv = document.createElement("div");
         newDiv.id = "createDiv";
@@ -90,11 +81,9 @@ var shoppinglistA05;
             deleteItem(newDiv);
         });
     }
-    //löscht ein Item bei click auf trash
     function deleteItem(newDiv) {
         newDiv.parentElement.removeChild(newDiv);
     }
-    //editiert ein Item bei click auf edit
     function editItem(newDiv, item, amount, comment) {
         let itemx = document.querySelector("input#inputx");
         itemx.value = item;
@@ -104,7 +93,6 @@ var shoppinglistA05;
         commentx.value = comment;
         deleteItem(newDiv);
     }
-    //cleared die Input Felder
     function clearInputs() {
         let itemx = document.querySelector("input#inputx");
         itemx.value = "";

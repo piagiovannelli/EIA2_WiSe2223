@@ -11,7 +11,7 @@ namespace shoppinglistA05 {
 
     window.addEventListener("load", handleLoad);
 
-    //interface für die Daten in der JSON File
+    
     export interface Input {
         item: string;
         amount: number;
@@ -20,7 +20,7 @@ namespace shoppinglistA05 {
         purchase: string;
     }
 
-    //lädt Liste und ruft loadData auf
+   
     async function handleLoad(): Promise<void> {
         let button: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=button]");
         let response: Response = await fetch("data.json");
@@ -31,13 +31,13 @@ namespace shoppinglistA05 {
         loadData(data);
     }
 
-    //managed die Buttons
+    
     function handleButton(): void {
         loadInput();
         sendData();
     }
 
-    //client austausch
+    
     async function sendData(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
@@ -45,7 +45,7 @@ namespace shoppinglistA05 {
         alert("Data sent");
     }
 
-    //lädt die Daten aus dem JSON Array in Variablen und gibt sie an loadItem weiter
+    
     function loadData(data: Input[]): void {
         for (let index: number = 0; index < data.length; index++) {
             let item: string = data[index].item;
@@ -58,7 +58,7 @@ namespace shoppinglistA05 {
         }
     }
 
-    //lädt den Input in den Feldern in Variablen und übergibt es dann zur loadItem Funktion
+    
     function loadInput(): void {
         let formData: FormData = new FormData(document.forms[0]);
         let item: string = formData.get("Item").toString();
@@ -66,7 +66,7 @@ namespace shoppinglistA05 {
         let date: string = new Date().toLocaleDateString();
         let comment: string = formData.get("Area").toString();
 
-        //umwandlung nextPurchase von Input in string
+       
         let purchaseCheckbox: FormDataEntryValue = formData.get("Checkbox");
         let purchase: string = "";
         if (purchaseCheckbox == null) {
@@ -75,14 +75,14 @@ namespace shoppinglistA05 {
             purchase = " buy";
         }
 
-        //löscht Value von Inputs
+        
         clearInputs();
 
-        //generiere nun einen neuen Eintrag
+        
         loadItem(item, amount, date, comment, purchase);
     }
 
-    //Funktion zur generierung eines Item Felds im Output
+    
     function loadItem(item: string, amount: number, date: string, comment: string, purchase: string): void {
         let newDiv: HTMLDivElement = document.createElement("div");
         newDiv.id = "createDiv";
@@ -117,12 +117,12 @@ namespace shoppinglistA05 {
         });
     }
 
-    //löscht ein Item bei click auf trash
+    
     function deleteItem(newDiv: HTMLDivElement): void {
         newDiv.parentElement.removeChild(newDiv);
     }
 
-    //editiert ein Item bei click auf edit
+    
     function editItem(newDiv: HTMLDivElement, item: string, amount: number, comment: string): void {
         let itemx: HTMLInputElement = document.querySelector("input#inputx");
         itemx.value = item;
@@ -133,7 +133,7 @@ namespace shoppinglistA05 {
         deleteItem(newDiv);
     }
 
-    //cleared die Input Felder
+    
     function clearInputs(): void {
         let itemx: HTMLInputElement = document.querySelector("input#inputx");
         itemx.value = "";
