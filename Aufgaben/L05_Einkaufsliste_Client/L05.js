@@ -24,7 +24,7 @@ var shoppinglistA05;
     async function sendData() {
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
-        await fetch("shoppinglist.html?" + query.toString());
+        await fetch("L05.html?" + query.toString());
         alert("Data sent");
     }
     function loadData(data) {
