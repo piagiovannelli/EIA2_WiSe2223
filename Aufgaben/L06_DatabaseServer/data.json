@@ -1,0 +1,22 @@
+[{
+    "item": "noodles",
+    "amount": 4,
+    "comment": "packages",
+    "date": "03.11.2022",
+    "purchase": ""
+  
+},
+{
+    "item": "banana(s)",
+    "amount": 4,
+    "comment": "bio & regio",
+    "date": "01.11.2022",
+    "purchase": " buy"
+},
+{
+    "item": "water",
+    "amount": 10,
+    "comment": "bottles",
+    "date": "15.10.2022",
+    "purchase": ""
+}]
