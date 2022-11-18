@@ -1,10 +1,4 @@
-// *
-// Aufgabe: L06 Shopping List - Client
-// Name: Bastian Aberle
-// Matrikel: 271166
-// Datum: 11.11.2022
-// Quellen: EIA2 - Videos, W3Schools, Lisa Blindenhöfer
-// */
+
 var shoppinglistA06;
 (function (shoppinglistA06) {
     window.addEventListener("load", handleLoad);
