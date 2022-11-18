@@ -28,7 +28,7 @@ namespace shoppinglistA06 {
     async function handleLoad(): Promise<void> {
         let button: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[id=but1]");
 
-        let response: Response = await fetch("https://webuser.hs-furtwangen.de/~aberleba/Database/index.php/?command=find&collection=data");
+        let response: Response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php/?command=find&collection=data");
         let entry: string = await response.text();
         let data: Entrys = JSON.parse(entry);
 
@@ -67,7 +67,7 @@ namespace shoppinglistA06 {
         query.set("collection", "data");
         query.set("data", newJSON);  
         // console.log(JSON.stringify(json));  
-        let response: Response = await fetch("https://webuser.hs-furtwangen.de/~aberleba/Database/index.php?" + query.toString());
+        let response: Response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
         // console.log(response);
         console.log("data sent");
     }
@@ -228,7 +228,7 @@ namespace shoppinglistA06 {
         
             
 
-            let response: Response = await fetch("https://webuser.hs-furtwangen.de/~aberleba/Database/index.php?" + query.toString());
+            let response: Response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
             console.log("data sent");
 
     }
@@ -242,7 +242,7 @@ namespace shoppinglistA06 {
         query.set("collection", "data");
         query.set("id", index.toString());  
 
-        let response: Response = await fetch("https://webuser.hs-furtwangen.de/~aberleba/Database/index.php?" + query.toString());
+        let response: Response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
 
         console.log("deletet");
 

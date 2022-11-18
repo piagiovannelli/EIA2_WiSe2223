@@ -7,7 +7,7 @@ var shoppinglistA06;
     //lädt Liste und ruft loadData auf
     async function handleLoad() {
         let button = document.querySelector("button[id=but1]");
-        let response = await fetch("https://webuser.hs-furtwangen.de/~aberleba/Database/index.php/?command=find&collection=data");
+        let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php/?command=find&collection=data");
         let entry = await response.text();
         let data = JSON.parse(entry);
         button.addEventListener("click", handleButton);
@@ -36,7 +36,7 @@ var shoppinglistA06;
         query.set("collection", "data");
         query.set("data", newJSON);
         // console.log(JSON.stringify(json));  
-        let response = await fetch("https://webuser.hs-furtwangen.de/~aberleba/Database/index.php?" + query.toString());
+        let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
         // console.log(response);
         console.log("data sent");
     }
@@ -161,7 +161,7 @@ var shoppinglistA06;
         console.log(index + "index");
         query.set("data", newJSON);
         console.log(query);
-        let response = await fetch("https://webuser.hs-furtwangen.de/~aberleba/Database/index.php?" + query.toString());
+        let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
         console.log("data sent");
     }
     //löscht ein Item bei click auf trash
@@ -171,7 +171,7 @@ var shoppinglistA06;
         query.set("command", "delete");
         query.set("collection", "data");
         query.set("id", index.toString());
-        let response = await fetch("https://webuser.hs-furtwangen.de/~aberleba/Database/index.php?" + query.toString());
+        let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
         console.log("deletet");
     }
     //editiert ein Item bei click auf edit
