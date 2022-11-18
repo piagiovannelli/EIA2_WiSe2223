@@ -1,22 +1,18 @@
 [{
-    "item": "noodles",
-    "amount": 4,
-    "comment": "packages",
-    "date": "03.11.2022",
+    "item": "Müsli ",
+    "amount": 1,
+    "comment": " Alnatura",
+    "date": "03.11.2022 ",
     "purchase": ""
   
 },
 {
-    "item": "banana(s)",
+    "item": "Äpfel ",
     "amount": 4,
-    "comment": "bio & regio",
-    "date": "01.11.2022",
+    "comment": "Pink Lady ",
+    "date": "01.11.2022  ",
     "purchase": " buy"
-},
-{
-    "item": "water",
-    "amount": 10,
-    "comment": "bottles",
-    "date": "15.10.2022",
-    "purchase": ""
-}]
+}
+
+]
+

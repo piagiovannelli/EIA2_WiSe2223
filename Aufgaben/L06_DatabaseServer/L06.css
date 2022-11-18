@@ -1,11 +1,12 @@
 .container {
-    border-radius: 25px;
+    border-style: solid;
+    border-color: rgb(207, 218, 233);
     height: 700px;
-    width: 450px;
+    width: 390px;
     margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
-    background-color: lightsteelblue;
+    background-color: rgba(234, 196, 226, 0.749);
     justify-content: center;
     text-align: center;
     float: left;
@@ -13,34 +14,36 @@
 
 body {
     font-family: Helvetica;
-    background-color: white;
+    background-image: url(./Einkaufswagen\ Kopie\ 3.jpg);
 }
 
 h1 {
     position: relative;
-    left: 100px;
-    top: 15px;
-    font-family: Helvetica;
+    left: 65px;
+    top: 4px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     border-width: 2px;
-    background-color: lightsteelblue;
     width: 250px;
     height: 35px;
-
+    
 }
+
+
 #testbut {
     width: 100px;
     position: relative;
     top: -500px;
 }
+
 #but1 {
-    font-size: small;
+    font-size: x-small;
     position: relative;
     font-weight:500;
     cursor: pointer;
-    top: -230px;
+    top: -235px;
     width: 100px;
-    border: none;
-    background-color: lightsteelblue;
+    border-radius: 10%;
+    background-color: rgb(207, 218, 233);
 }
 
 button:hover {
@@ -84,10 +87,10 @@ textarea {
     position: relative;
     left: 16px;
     top: -20px;
-
-    border-top-style: dotted;
+    border-top-style: groove;
+    border-color: rgb(207, 218, 233);
     padding-top: 25px;
-    width: 415px;
+    width: 352px;
     height: 350px;
     float:left;
 }
