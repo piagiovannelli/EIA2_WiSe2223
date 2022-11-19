@@ -14,7 +14,7 @@ namespace a06_shoppinglist {
         Product: string;
         Amount: number;
         Comment: string;
-        //date: string;
+        
         Checkboxdate: boolean;
     }
 
@@ -38,7 +38,7 @@ namespace a06_shoppinglist {
 
     }
 
-    //ruft Funktionen für Click auf Button auf
+    
     function handleaddbutton(): void {
         submitbutton();
         addList();
@@ -69,7 +69,7 @@ namespace a06_shoppinglist {
 
     }
 
-    //lädt data aus data.ts
+    
     function loaddata(inputs: Item): void {
 
         console.log("load data");
@@ -82,14 +82,14 @@ namespace a06_shoppinglist {
 
 
         for (let counter of newlist) {
-            //console.log("test");
+            
             console.log(inputs.data[counter].Product);
 
             let amount: number = inputs.data[counter].Amount;
             let product: string = inputs.data[counter].Product;
             let comment: string = inputs.data[counter].Comment;
 
-            //buy next time 
+             
             let element: HTMLInputElement = <HTMLInputElement>document.getElementById("checkboxdate");
             let nextpurchase: string;
             if (element.checked) {
@@ -107,19 +107,19 @@ namespace a06_shoppinglist {
             var getelement: HTMLElement = document.querySelector("#alloutputs");
             getelement.appendChild(nextelement);
 
-            //Neue Checkbox 
+            
             let listcheck: HTMLInputElement = document.createElement("input");
             listcheck.type = "checkbox";
             listcheck.name = "Checkbox1";
             listcheck.className = "checkbox1";
             nextelement.appendChild(listcheck);
 
-            //neuer Trash 
+             
             let listtrash: HTMLDivElement = document.createElement("div");
             listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
             nextelement.appendChild(listtrash);
 
-            //neues edit 
+             
             let listedit: HTMLDivElement = document.createElement("div");
             listedit.className = "edit";
             listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
@@ -139,10 +139,10 @@ namespace a06_shoppinglist {
         }
     }
 
-    //fügt Eingegebenes der Liste hinzu
+    
     function addList(): void {
 
-        //console.log("add inputs");
+        
 
         let data: FormData = new FormData(document.forms[0]);
         let product: string = data.get("Product")?.toString()!;
@@ -151,7 +151,7 @@ namespace a06_shoppinglist {
 
         let dateoftoday: Date = new Date();
 
-        //buy next time 
+        
         let element: HTMLInputElement = <HTMLInputElement>document.getElementById("checkboxdate");
         let nextpurchase: string;
         if (element.checked) {
@@ -160,27 +160,27 @@ namespace a06_shoppinglist {
             nextpurchase = " ";
         }
 
-        //gibt die einzelnen inputs aus
+        
         let nextelement: HTMLDivElement = document.createElement("div");
         nextelement.classList.add("inputData");
         nextelement.innerHTML = dateoftoday.toLocaleDateString() + "   " + product + "   " + amount + "   " + comment + "   " + nextpurchase;
         var getelement: HTMLElement = document.querySelector("#alloutputs");
         getelement.appendChild(nextelement);
 
-        //Neue Checkbox 
+         
         let listcheck: HTMLInputElement = document.createElement("input");
         listcheck.type = "checkbox";
         listcheck.name = "Checkbox1";
         listcheck.className = "checkbox1";
-        //listcheck.checked = "checked";
+        
         nextelement.appendChild(listcheck);
 
-        //neuer Trash 
+        
         let listtrash: HTMLDivElement = document.createElement("div");
         listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
         nextelement.appendChild(listtrash);
 
-        //neues edit 
+        
         let listedit: HTMLDivElement = document.createElement("div");
         listedit.className = "edit";
         listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
@@ -198,7 +198,7 @@ namespace a06_shoppinglist {
             daterefresh(nextelement, product, amount, comment, nextpurchase, counter);
         });
 
-        //alle inputs leeren
+        
         let inputproductname: HTMLInputElement = document.getElementById("inputproduct") as HTMLInputElement;
         inputproductname.value = "";
         let inputamount: HTMLInputElement = document.getElementById("amount") as HTMLInputElement;
@@ -216,19 +216,19 @@ namespace a06_shoppinglist {
         let dateoftodaynew: Date = new Date();
         nextelement.innerHTML = dateoftodaynew.toLocaleDateString() + "   " + product + "   " + amount + "   " + comment + "   " + nextpurchase;
 
-        //Neue Checkbox 
+        
         let listcheck: HTMLInputElement = document.createElement("input");
         listcheck.type = "checkbox";
         listcheck.name = "Checkbox1";
         listcheck.className = "checkbox1";
         nextelement.appendChild(listcheck);
 
-        //neuer Trash 
+         
         let listtrash: HTMLDivElement = document.createElement("div");
         listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
         nextelement.appendChild(listtrash);
 
-        //neues edit 
+         
         let listedit: HTMLDivElement = document.createElement("div");
         listedit.className = "edit";
         listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
@@ -257,7 +257,7 @@ namespace a06_shoppinglist {
         console.log("date refreshed");
     }
 
-    //delete funktion
+    
     async function deletelistelement(nextelement: HTMLDivElement, counter: number): Promise<void> {
 
         nextelement.parentElement.removeChild(nextelement);
@@ -272,7 +272,7 @@ namespace a06_shoppinglist {
 
     }
 
-    //edit funktion
+    
     function editlistelement(nextelement: HTMLDivElement, product: string, amount: number, comment: string, counter: number): void {
         console.log("edit list element");
         let input1: HTMLInputElement = document.querySelector("input#inputproduct");

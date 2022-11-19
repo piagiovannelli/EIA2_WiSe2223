@@ -15,7 +15,6 @@ var a06_shoppinglist;
         let inputs = JSON.parse(report);
         loaddata(inputs);
     }
-    //ruft Funktionen für Click auf Button auf
     function handleaddbutton() {
         submitbutton();
         addList();
@@ -38,7 +37,6 @@ var a06_shoppinglist;
         console.log(response);
         alert("sent");
     }
-    //lädt data aus data.ts
     function loaddata(inputs) {
         console.log("load data");
         let newlist = [];
@@ -47,12 +45,10 @@ var a06_shoppinglist;
             console.log(index + "index");
         }
         for (let counter of newlist) {
-            //console.log("test");
             console.log(inputs.data[counter].Product);
             let amount = inputs.data[counter].Amount;
             let product = inputs.data[counter].Product;
             let comment = inputs.data[counter].Comment;
-            //buy next time 
             let element = document.getElementById("checkboxdate");
             let nextpurchase;
             if (element.checked) {
@@ -67,17 +63,14 @@ var a06_shoppinglist;
             nextelement.innerHTML = dateoftoday.toLocaleDateString() + "   " + product + "   " + amount + "   " + comment + "   " + nextpurchase;
             var getelement = document.querySelector("#alloutputs");
             getelement.appendChild(nextelement);
-            //Neue Checkbox 
             let listcheck = document.createElement("input");
             listcheck.type = "checkbox";
             listcheck.name = "Checkbox1";
             listcheck.className = "checkbox1";
             nextelement.appendChild(listcheck);
-            //neuer Trash 
             let listtrash = document.createElement("div");
             listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
             nextelement.appendChild(listtrash);
-            //neues edit 
             let listedit = document.createElement("div");
             listedit.className = "edit";
             listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
@@ -93,15 +86,12 @@ var a06_shoppinglist;
             });
         }
     }
-    //fügt Eingegebenes der Liste hinzu
     function addList() {
-        //console.log("add inputs");
         let data = new FormData(document.forms[0]);
         let product = data.get("Product")?.toString();
         let amount = Number(data.get("Amount"));
         let comment = data.get("Comment")?.toString();
         let dateoftoday = new Date();
-        //buy next time 
         let element = document.getElementById("checkboxdate");
         let nextpurchase;
         if (element.checked) {
@@ -110,24 +100,19 @@ var a06_shoppinglist;
         else {
             nextpurchase = " ";
         }
-        //gibt die einzelnen inputs aus
         let nextelement = document.createElement("div");
         nextelement.classList.add("inputData");
         nextelement.innerHTML = dateoftoday.toLocaleDateString() + "   " + product + "   " + amount + "   " + comment + "   " + nextpurchase;
         var getelement = document.querySelector("#alloutputs");
         getelement.appendChild(nextelement);
-        //Neue Checkbox 
         let listcheck = document.createElement("input");
         listcheck.type = "checkbox";
         listcheck.name = "Checkbox1";
         listcheck.className = "checkbox1";
-        //listcheck.checked = "checked";
         nextelement.appendChild(listcheck);
-        //neuer Trash 
         let listtrash = document.createElement("div");
         listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
         nextelement.appendChild(listtrash);
-        //neues edit 
         let listedit = document.createElement("div");
         listedit.className = "edit";
         listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
@@ -141,7 +126,6 @@ var a06_shoppinglist;
         listcheck.addEventListener("click", function () {
             daterefresh(nextelement, product, amount, comment, nextpurchase, counter);
         });
-        //alle inputs leeren
         let inputproductname = document.getElementById("inputproduct");
         inputproductname.value = "";
         let inputamount = document.getElementById("amount");
@@ -156,17 +140,14 @@ var a06_shoppinglist;
         console.log("date");
         let dateoftodaynew = new Date();
         nextelement.innerHTML = dateoftodaynew.toLocaleDateString() + "   " + product + "   " + amount + "   " + comment + "   " + nextpurchase;
-        //Neue Checkbox 
         let listcheck = document.createElement("input");
         listcheck.type = "checkbox";
         listcheck.name = "Checkbox1";
         listcheck.className = "checkbox1";
         nextelement.appendChild(listcheck);
-        //neuer Trash 
         let listtrash = document.createElement("div");
         listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
         nextelement.appendChild(listtrash);
-        //neues edit 
         let listedit = document.createElement("div");
         listedit.className = "edit";
         listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
@@ -189,7 +170,6 @@ var a06_shoppinglist;
         let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
         console.log("date refreshed");
     }
-    //delete funktion
     async function deletelistelement(nextelement, counter) {
         nextelement.parentElement.removeChild(nextelement);
         let query = new URLSearchParams();
@@ -199,7 +179,6 @@ var a06_shoppinglist;
         let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
         console.log("delete");
     }
-    //edit funktion
     function editlistelement(nextelement, product, amount, comment, counter) {
         console.log("edit list element");
         let input1 = document.querySelector("input#inputproduct");
