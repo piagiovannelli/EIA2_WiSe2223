@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shopping list</title>
+    <title>Document</title>
     
     <script src="L06.js"></script>
-    <script src="https://kit.fontawesome.com/4287d81834.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="L06.css">
+    <script src="https://kit.fontawesome.com/4287d81834.js" crossorigin="anonymous"></script>
 
 </head>
-
 <body>
-    <form id="inputForm" method="get">
-        <div class="container">
-            <h1>shopping list</h1>
-            <fieldset id="fsItem">
-                <input id="inputx" class="item" type="text" name="Item" placeholder="item" required>
-            </fieldset>
-            <fieldset id="fsAmount">
-                <input id="amountx" class="amount" type="number" name="Amount" placeholder="amount" required>
-            </fieldset>
-            <fieldset id="fsDate">
-                <input id="datex" class="date" type="date" name="NewDate">
-            </fieldset>
-            <fieldset id="nextBuy">
-                <h3> buy next time? </h3>
-                <input id="nextBuyx" class="nextBuy" type="checkbox" name="Checkbox">
-            </fieldset>
-            <fieldset id="fsComment">
-                <input id="commentx" class="comment" name="Area" rows="3" placeholder="comments"></textarea>
-            </fieldset>
-            <button type="button" id="but1">add new item</button>
+    
+    <div class="container1">
 
-            <div id="output">
+    <form id="shopform">
+            <h1 class="title">shopping list</h1>
+            <br/><br/>
+            <div id="allinputs">
+                <fieldset>
+                    <input id="inputproduct" type="text" name="Product" placeholder="Add another item..." required>
+                </fieldset>
 
-            </div>
+                <fieldset>
+                    <input id="amount" type="number" name="Amount" placeholder="amount...">
+                </fieldset>
+
+                <fieldset>
+                    <label id="buy">buy it next time?</label>
+                    <input type="checkbox" id="checkboxdate" name="Checkboxdate" checked="checked">
+                </fieldset>
+
+                <fieldset>
+                    <input id="inputcomment" type="text" name="Comment" placeholder="comment...">
+                </fieldset>
+
+                
     </form>
 
+    <div id="button">
+        <button type="button" id="add" form="shopform">Add</button>
+    </div>
 
-
+            </div>
+            <br/>
+            <div id="alloutputs"> 
+               <ul>
+                   <li></li>
+               </ul>
+            </div>
+        </div>
 </body>
-
 </html>

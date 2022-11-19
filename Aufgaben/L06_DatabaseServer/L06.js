@@ -1,199 +1,214 @@
-var shoppinglistA06;
-(function (shoppinglistA06) {
-    window.addEventListener("load", handleLoad);
-    //interface für die Daten in der JSON File
-    let counter = 0;
-    let globalBol = false;
-    //lädt Liste und ruft loadData auf
-    async function handleLoad() {
-        let button = document.querySelector("button[id=but1]");
+/*
+ Aufgabe:L06_DatabaseServer
+ Name: Pia Giovannelli
+ Matrikel: 271245
+ Datum: 19.11.22
+ Quellen: Bastian Aberle, Aanya Khetarpal, Lisa Blindenhöfer, Cindy N., w3schools
+*/
+var a06_shoppinglist;
+(function (a06_shoppinglist) {
+    window.addEventListener("load", handleload);
+    async function handleload() {
+        document.querySelector("#add").addEventListener("click", handleaddbutton);
         let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php/?command=find&collection=data");
-        let entry = await response.text();
-        let data = JSON.parse(entry);
-        button.addEventListener("click", handleButton);
-        loadData(data);
-        // clearInputs();
+        let report = await response.text();
+        let inputs = JSON.parse(report);
+        loaddata(inputs);
     }
-    //managed die Buttons
-    function handleButton() {
-        sendData();
-        loadInput();
+    //ruft Funktionen für Click auf Button auf
+    function handleaddbutton() {
+        submitbutton();
+        addList();
     }
-    //client austausch
-    async function sendData() {
+    //sendet
+    async function submitbutton() {
         let formData = new FormData(document.forms[0]);
         let json = {};
-        //Umwandlung FormData in Json FormData
         for (let key of formData.keys())
             if (!json[key]) {
                 let values = formData.getAll(key);
                 json[key] = values.length > 1 ? values : values[0];
             }
         let query = new URLSearchParams();
-        let newJSON = JSON.stringify(json);
-        console.log(newJSON);
         query.set("command", "insert");
         query.set("collection", "data");
-        query.set("data", newJSON);
-        // console.log(JSON.stringify(json));  
-        let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
-        // console.log(response);
+        query.set("data", JSON.stringify(json));
         console.log("data sent");
+        let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
+        console.log(response);
+        alert("sent");
     }
-    //lädt die Daten aus dem JSON Array in Variablen und gibt sie an loadItem weiter
-    function loadData(newData) {
-        let list = [];
-        for (let test in newData.data) {
-            list.push(test);
+    //lädt data aus data.ts
+    function loaddata(inputs) {
+        console.log("load data");
+        let newlist = [];
+        for (let index in inputs.data) {
+            newlist.push(index);
+            console.log(index + "index");
         }
-        for (let index of list) {
-            console.log(newData.data[index].Item);
-            let item = newData.data[index].Item;
-            let amount = newData.data[index].Amount;
-            let date = newData.data[index].NewDate.toString();
-            let comment = newData.data[index].Area;
-            let purchaseCheckbox = newData.data[index].Checkbox;
-            // console.log(purchaseCheckbox);
-            let purchase;
-            if (purchaseCheckbox == "on") {
-                purchase = " buy";
-                // console.log("purchase=" + purchase);
+        for (let counter of newlist) {
+            //console.log("test");
+            console.log(inputs.data[counter].Product);
+            let amount = inputs.data[counter].Amount;
+            let product = inputs.data[counter].Product;
+            let comment = inputs.data[counter].Comment;
+            //buy next time 
+            let element = document.getElementById("checkboxdate");
+            let nextpurchase;
+            if (element.checked) {
+                nextpurchase = " buy";
             }
             else {
-                purchase = "";
+                nextpurchase = " ";
             }
-            loadItem(item, amount, comment, purchase, date, index);
-            counter++;
+            let dateoftoday = new Date();
+            let nextelement = document.createElement("div");
+            nextelement.classList.add("inputData");
+            nextelement.innerHTML = dateoftoday.toLocaleDateString() + "   " + product + "   " + amount + "   " + comment + "   " + nextpurchase;
+            var getelement = document.querySelector("#alloutputs");
+            getelement.appendChild(nextelement);
+            //Neue Checkbox 
+            let listcheck = document.createElement("input");
+            listcheck.type = "checkbox";
+            listcheck.name = "Checkbox1";
+            listcheck.className = "checkbox1";
+            nextelement.appendChild(listcheck);
+            //neuer Trash 
+            let listtrash = document.createElement("div");
+            listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
+            nextelement.appendChild(listtrash);
+            //neues edit 
+            let listedit = document.createElement("div");
+            listedit.className = "edit";
+            listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
+            nextelement.appendChild(listedit);
+            listtrash.addEventListener("click", function () {
+                deletelistelement(nextelement, counter);
+            });
+            listedit.addEventListener("click", function () {
+                editlistelement(nextelement, product, amount, comment, counter);
+            });
+            listcheck.addEventListener("click", function () {
+                daterefresh(nextelement, product, amount, comment, nextpurchase, counter);
+            });
         }
-        // loadData(newData);
     }
-    //lädt den Input in den Feldern in Variablen und übergibt es dann zur loadItem Funktion
-    function loadInput() {
-        let formData = new FormData(document.forms[0]);
-        let item = formData.get("Item").toString();
-        let amount = formData.get("Amount").toString();
-        let date = formData.get("NewDate").toString();
-        let comment = formData.get("Area").toString();
-        let index;
-        //umwandlung nextPurchase von Input in string
-        let purchaseCheckbox = formData.get("Checkbox");
-        let purchase = "";
-        if (purchaseCheckbox == null) {
-            purchase = "";
+    //fügt Eingegebenes der Liste hinzu
+    function addList() {
+        //console.log("add inputs");
+        let data = new FormData(document.forms[0]);
+        let product = data.get("Product")?.toString();
+        let amount = Number(data.get("Amount"));
+        let comment = data.get("Comment")?.toString();
+        let dateoftoday = new Date();
+        //buy next time 
+        let element = document.getElementById("checkboxdate");
+        let nextpurchase;
+        if (element.checked) {
+            nextpurchase = " buy";
         }
         else {
-            purchase = " buy";
+            nextpurchase = " ";
         }
-        //generiere nun einen neuen Eintrag
-        loadItem(item, amount, comment, purchase, date, index);
-        //löscht Value von Inputs
-        // clearInputs();
+        //gibt die einzelnen inputs aus
+        let nextelement = document.createElement("div");
+        nextelement.classList.add("inputData");
+        nextelement.innerHTML = dateoftoday.toLocaleDateString() + "   " + product + "   " + amount + "   " + comment + "   " + nextpurchase;
+        var getelement = document.querySelector("#alloutputs");
+        getelement.appendChild(nextelement);
+        //Neue Checkbox 
+        let listcheck = document.createElement("input");
+        listcheck.type = "checkbox";
+        listcheck.name = "Checkbox1";
+        listcheck.className = "checkbox1";
+        //listcheck.checked = "checked";
+        nextelement.appendChild(listcheck);
+        //neuer Trash 
+        let listtrash = document.createElement("div");
+        listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
+        nextelement.appendChild(listtrash);
+        //neues edit 
+        let listedit = document.createElement("div");
+        listedit.className = "edit";
+        listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
+        nextelement.appendChild(listedit);
+        listtrash.addEventListener("click", function () {
+            deletelistelement(nextelement, counter);
+        });
+        listedit.addEventListener("click", function () {
+            editlistelement(nextelement, product, amount, comment, counter);
+        });
+        listcheck.addEventListener("click", function () {
+            daterefresh(nextelement, product, amount, comment, nextpurchase, counter);
+        });
+        //alle inputs leeren
+        let inputproductname = document.getElementById("inputproduct");
+        inputproductname.value = "";
+        let inputamount = document.getElementById("amount");
+        inputamount.value = "";
+        let inputcomment = document.getElementById("inputcomment");
+        inputcomment.value = "";
+        setTimeout(function () {
+            location.reload();
+        }, 2000);
     }
-    //Funktion zur generierung eines Item Felds im Output
-    function loadItem(item, amount, comment, purchase, date, index) {
-        let newDiv = document.createElement("div");
-        newDiv.id = "createDiv";
-        let parent = document.querySelector("#output");
-        newDiv.className = "genoutput";
-        newDiv.innerHTML = date + " " + amount + " " + item + " " + comment + " " + purchase;
-        parent.appendChild(newDiv);
-        let newContainer = document.createElement("div");
-        newContainer.id = "containerIcons";
-        newDiv.appendChild(newContainer);
-        let newCheckbox = document.createElement("input");
-        newCheckbox.type = "checkbox";
-        newCheckbox.name = "Checkbox";
-        newContainer.appendChild(newCheckbox);
-        let newEdit = document.createElement("div");
-        newEdit.innerHTML = "<img id='edit' src='./pen-solid.svg'>";
-        newContainer.appendChild(newEdit);
-        let newTrash = document.createElement("div");
-        newTrash.innerHTML = "<img id='trash' src='./trash-solid.svg'>";
-        newCheckbox.id = "trash";
-        newContainer.appendChild(newTrash);
-        newEdit.addEventListener("click", function () {
-            editItem(newDiv, item, amount, comment, date, index);
+    async function daterefresh(nextelement, product, amount, comment, nextpurchase, counter) {
+        console.log("date");
+        let dateoftodaynew = new Date();
+        nextelement.innerHTML = dateoftodaynew.toLocaleDateString() + "   " + product + "   " + amount + "   " + comment + "   " + nextpurchase;
+        //Neue Checkbox 
+        let listcheck = document.createElement("input");
+        listcheck.type = "checkbox";
+        listcheck.name = "Checkbox1";
+        listcheck.className = "checkbox1";
+        nextelement.appendChild(listcheck);
+        //neuer Trash 
+        let listtrash = document.createElement("div");
+        listtrash.innerHTML = "<i id='trash' class='fa-solid fa-trash-can'></i>";
+        nextelement.appendChild(listtrash);
+        //neues edit 
+        let listedit = document.createElement("div");
+        listedit.className = "edit";
+        listedit.innerHTML = "<i id ='edit' class='fa-regular fa-pen-to-square'></i>";
+        nextelement.appendChild(listedit);
+        listtrash.addEventListener("click", function () {
+            deletelistelement(nextelement, counter);
         });
-        newTrash.addEventListener("click", function () {
-            deleteItem(newDiv, index);
+        listedit.addEventListener("click", function () {
+            editlistelement(nextelement, product, amount, comment, counter);
         });
-        newCheckbox.addEventListener("click", function () {
-            updateDate(newDiv, index, item, amount, comment, date, purchase);
+        listcheck.addEventListener("click", function () {
+            daterefresh(nextelement, product, amount, comment, nextpurchase, counter);
         });
-    }
-    async function updateDate(newDiv, index, item, amount, comment, date, purchase) {
-        console.log("checkbox");
-        var dateObj = new Date();
-        var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate();
-        var year = dateObj.getUTCFullYear();
-        var NewDate = year + "-" + month + "-" + day;
-        newDiv.innerHTML = NewDate + " " + amount + " " + item + " " + comment + " " + purchase;
-        let newContainer = document.createElement("div");
-        newContainer.id = "containerIcons";
-        newDiv.appendChild(newContainer);
-        let newCheckbox = document.createElement("input");
-        newCheckbox.type = "checkbox";
-        newCheckbox.name = "Checkbox";
-        newContainer.appendChild(newCheckbox);
-        let newEdit = document.createElement("div");
-        newEdit.innerHTML = "<img id='edit' src='./pen-solid.svg'>";
-        newContainer.appendChild(newEdit);
-        let newTrash = document.createElement("div");
-        newTrash.innerHTML = "<img id='trash' src='./trash-solid.svg'>";
-        newCheckbox.id = "trash";
-        newContainer.appendChild(newTrash);
-        newEdit.addEventListener("click", function () {
-            editItem(newDiv, item, amount, comment, date, index);
-        });
-        newTrash.addEventListener("click", function () {
-            deleteItem(newDiv, index);
-        });
-        newCheckbox.addEventListener("click", function () {
-            updateDate(newDiv, index, item, amount, comment, date, purchase);
-        });
-        let json = { NewDate };
-        let newJSON = JSON.stringify(json);
+        let newdate = dateoftodaynew.toLocaleDateString();
+        let json = { newdate };
         let query = new URLSearchParams();
         query.set("command", "update");
         query.set("collection", "data");
-        query.set("id", index);
-        console.log(index + "index");
-        query.set("data", newJSON);
-        console.log(query);
+        query.set("data", JSON.stringify(json));
         let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
-        console.log("data sent");
+        console.log("date refreshed");
     }
-    //löscht ein Item bei click auf trash
-    async function deleteItem(newDiv, index) {
-        newDiv.parentElement.removeChild(newDiv);
+    //delete funktion
+    async function deletelistelement(nextelement, counter) {
+        nextelement.parentElement.removeChild(nextelement);
         let query = new URLSearchParams();
         query.set("command", "delete");
         query.set("collection", "data");
-        query.set("id", index.toString());
+        query.set("id", counter.toString());
         let response = await fetch("https://webuser.hs-furtwangen.de/~giovanne/Database/index.php?" + query.toString());
-        console.log("deletet");
+        console.log("delete");
     }
-    //editiert ein Item bei click auf edit
-    async function editItem(newDiv, item, amount, comment, date, index) {
-        let itemx = document.querySelector("input#inputx");
-        itemx.value = item;
-        let amountx = document.querySelector("input#amountx");
-        amountx.value = amount.toString();
-        let commentx = document.querySelector("input#commentx");
-        commentx.value = comment;
-        let datex = document.querySelector("input#datex");
-        datex.value = date;
-        deleteItem(newDiv, index);
+    //edit funktion
+    function editlistelement(nextelement, product, amount, comment, counter) {
+        console.log("edit list element");
+        let input1 = document.querySelector("input#inputproduct");
+        input1.value = product;
+        let input2 = document.querySelector("input#amount");
+        input2.value = amount.toString();
+        let input3 = document.querySelector("input#inputcomment");
+        input3.value = comment;
+        deletelistelement(nextelement, counter);
     }
-    // cleared die Input Felder
-    function clearInputs() {
-        let itemx = document.querySelector("input#inputx");
-        itemx.value = "";
-        let amountx = document.querySelector("input#amountx");
-        amountx.value = "";
-        let commentx = document.querySelector("input#commentx");
-        commentx.value = "";
-    }
-})(shoppinglistA06 || (shoppinglistA06 = {}));
+})(a06_shoppinglist || (a06_shoppinglist = {}));
 //# sourceMappingURL=L06.js.map
