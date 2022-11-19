@@ -3,7 +3,7 @@
  Name: Pia Giovannelli
  Matrikel: 271245
  Datum: 19.11.22
- Quellen: Bastian Aberle, Aanya Khetarpal, Lisa Blindenhöfer, Cindy N., w3schools
+ Quellen: Bastian Aberle, Aanya Khetarpal, Lisa Blindenhöfer, Cindy Nguyen., w3schools
 */
 
 namespace a06_shoppinglist {
