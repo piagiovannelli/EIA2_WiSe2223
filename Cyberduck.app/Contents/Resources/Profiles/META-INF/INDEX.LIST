@@ -1,0 +1,31 @@
+JarIndex-Version: 1.0
+
+profiles-8.5.0.jar
+META-INF
+META-INF/maven
+META-INF/maven/ch.cyberduck
+META-INF/maven/ch.cyberduck/profiles
+Azure.cyberduckprofile
+B2.cyberduckprofile
+Box.cyberduckprofile
+DAV.cyberduckprofile
+DAVS.cyberduckprofile
+DRACOON (OAuth).cyberduckprofile
+Dropbox.cyberduckprofile
+FTP.cyberduckprofile
+FTPS.cyberduckprofile
+File.cyberduckprofile
+Files.com.cyberduckprofile
+Google Cloud Storage.cyberduckprofile
+Google Drive.cyberduckprofile
+Microsoft OneDrive.cyberduckprofile
+Microsoft SharePoint Site.cyberduckprofile
+Microsoft SharePoint.cyberduckprofile
+Nextcloud.cyberduckprofile
+Openstack Swift (Keystone 2).cyberduckprofile
+Openstack Swift (Keystone 3).cyberduckprofile
+Rackspace US.cyberduckprofile
+S3 (HTTPS).cyberduckprofile
+SFTP.cyberduckprofile
+ownCloud.cyberduckprofile
+
