@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Created-By: Maven JAR Plugin 3.3.0
-Build-Jdk-Spec: 17
-Implementation-Version: ce02b579e8dc60410e97fc28046b11b18487ab3b
-Specification-Vendor: iterate GmbH
-Specification-Version: 8.5.0.38556
-
