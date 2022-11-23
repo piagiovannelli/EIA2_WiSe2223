@@ -97,7 +97,7 @@ var L08_GenerativeKunst;
         let letters = "0123456789ABCDEF";
         let color = "#";
         for (let i = 0; i < 8; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+            color += letters[Math.floor(Math.random() * 12)];
         }
         return color;
     }

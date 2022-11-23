@@ -120,7 +120,7 @@ namespace L08_GenerativeKunst {
         let letters: string = "0123456789ABCDEF";
         let color: string = "#";
         for (let i: number = 0; i < 8; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+            color += letters[Math.floor(Math.random() * 12)];
         }
         return color;
     }
