@@ -1,0 +1,11 @@
+body {
+    text-align: center;
+    background-color: rgb(143, 221, 240);
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+canvas {
+    border: solid rgb(32, 54, 54);
+    border-radius: 5px;
+}
