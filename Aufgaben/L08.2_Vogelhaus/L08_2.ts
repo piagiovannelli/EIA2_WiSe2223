@@ -2,8 +2,8 @@
 Aufgabe: L08.2_Vogelhaus
 Name: Pia Giovannelli
 Matrikel: 271245
-Datum: 30.11.2022
-Quellen: In Zusammenarbeit mit Aanya Khetarpal, Julia Befus, Havva Kilic, Paula Jordans
+Datum: 3.12.2022
+Quellen:  Aanya Khetarpal, Arthur Aguair, Lisa Blindenhöfer, w3schools
 */
 
 namespace Vogelhaus {
@@ -33,12 +33,16 @@ namespace Vogelhaus {
         fillCanvas();
     }
 
+    
+    window.addEventListener("load", fillCanvas);  
+
     function fillCanvas(): void {
 
-        // Leinwandgröße
-        canvas.width = window.innerWidth * 0.95;
-        canvas.height = window.innerHeight * 0.85;
-
+        let canvas: HTMLCanvasElement | null = document.querySelector("canvas"); //Anpassung screen
+        if (!canvas)
+            return;
+       
+       
         let horizon: number = canvas.height * 0.38;
         let posMountains: Vector = { x: 0, y: horizon };
 
@@ -48,17 +52,23 @@ namespace Vogelhaus {
         drawCloud({ x: canvas.width * 0.4, y: canvas.height * 0.2 }, { x: 70, y: 40 });
         drawMountains(posMountains, canvas.height * 0.08, canvas.height * 0.15, "black", "white");
         drawMountains(posMountains, canvas.height * 0.05, canvas.height * 0.09, "#442b0b", "#c09682");
-
         drawTrees(0, 15);
-        
+        drawSnowman();
+        drawhouse({ x: 800, y: 540 });
+        drawbirdflying({ x: canvas.width , y: canvas.height });
+        drawbird({ x: canvas.width , y: canvas.height });
+        drawbirdsitting({ x: canvas.width , y: canvas.height });
+        drawsnowflakes();
+
+
     }
 
-    function drawBackground(_horizon: number): void { 
+    function drawBackground(_horizon: number): void {
 
-        // Himmekfarbe
+        // Himmelfarbe
         let gradientSky: CanvasGradient = crc2.createLinearGradient(0, 0, 0, _horizon);
         gradientSky.addColorStop(0, "skyblue");
-        gradientSky.addColorStop(1, "white");
+        gradientSky.addColorStop(1, "grey");
 
         crc2.fillStyle = gradientSky;
         crc2.fillRect(0, 0, canvas.width, _horizon);
@@ -66,13 +76,13 @@ namespace Vogelhaus {
         // Wiesenfarbe (voll mit Schnee)
         let gradientMeadow: CanvasGradient = crc2.createLinearGradient(0, _horizon, 0, canvas.height);
         gradientMeadow.addColorStop(0, "white");
-        gradientMeadow.addColorStop(1, "white");
+        gradientMeadow.addColorStop(1, "grey");
 
         crc2.fillStyle = gradientMeadow;
         crc2.fillRect(0, _horizon, canvas.width, canvas.height);
     }
 
-    function drawSun(_position: Vector): void { 
+    function drawSun(_position: Vector): void {
 
         //Sonne und Sonnenstrahlen
         let r1: number = canvas.width * 0.02;
@@ -91,7 +101,7 @@ namespace Vogelhaus {
         crc2.restore();
     }
 
-    function drawCloud(_position: Vector, _size: Vector): void { 
+    function drawCloud(_position: Vector, _size: Vector): void {
 
         // Basispartikel erstellen und färben
         let nParticles: number = 40;
@@ -160,7 +170,7 @@ namespace Vogelhaus {
         crc2.restore();
     }
 
-    function drawTrees(_min: number, _max: number): void { 
+    function drawTrees(_min: number, _max: number): void {
 
         // Abstand zwischen Bäumen
         let stepMin: number = 5;
@@ -208,8 +218,332 @@ namespace Vogelhaus {
         } while (x < canvas.width);
     }
 
+    function drawSnowman(): void {
+
+        //Schneekugeln
+        let radius: number = 40;
+        let positionX: number = 300;
+        let positionY: number = 350;
+
+        for (let i: number = 0; i < 3; i++) {
+            crc2.beginPath();
+            crc2.arc(positionX, positionY, radius, 0, 2 * Math.PI);
+            crc2.fillStyle = "white";
+            crc2.fill();
+            crc2.stroke();
+            crc2.closePath();
+
+
+            positionY = positionY + radius + 50;
+            radius = radius + 10;
+
+
+        }
+
+        //Nase Linie
+        crc2.beginPath();
+        crc2.moveTo(300, 350);
+        crc2.lineTo(305, 365);
+        crc2.stroke();
+        crc2.closePath();
+
+        //Augen
+        crc2.beginPath();
+        crc2.arc(positionX - 10, positionY - 307, radius - 66, 0, 2 * Math.PI);
+        crc2.fillStyle = "black";
+        crc2.fill();
+        crc2.closePath();
+
+        crc2.beginPath();
+        crc2.arc(positionX + 8, positionY - 307, radius - 66, 0, 2 * Math.PI);
+        crc2.fillStyle = "black";
+        crc2.fill();
+        crc2.closePath();
+
+        //Mund
+        crc2.beginPath();
+        crc2.arc(positionX + 3, positionY - 280, radius - 66, 0, 1 * Math.PI);
+        crc2.stroke();
+        crc2.closePath();
+
+        //Knöpfe
+        crc2.beginPath();
+        crc2.arc(positionX + 1, positionY - 190, radius - 66, 0, 2 * Math.PI);
+        crc2.fillStyle = "black";
+        crc2.fill();
+        crc2.closePath();
+
+        crc2.beginPath();
+        crc2.arc(positionX + 1, positionY - 210, radius - 66, 0, 2 * Math.PI);
+        crc2.fillStyle = "black";
+        crc2.fill();
+        crc2.closePath();
+
+        crc2.beginPath();
+        crc2.arc(positionX + 1, positionY - 230, radius - 66, 0, 2 * Math.PI);
+        crc2.fillStyle = "black";
+        crc2.fill();
+        crc2.closePath();
+
+        
+
+    }
+
+
+function drawsnowflakes(): void {
+    console.log("snowflakes");
+
+    for (let index: number = 0; index < 600; index++) {
+        let randomx: number = Math.floor(Math.random() * (1000 - 1) + 1);
+        let randomy: number = Math.floor(Math.random() * (700 - 1) + 1);
+        let randomscale: number = Math.floor(Math.random() * (4 - 1) + 1);
+
+        let r1: number = 1;
+        let r2: number = 2;
+
+        let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
+
+        gradient.addColorStop(0, "HSLA(0, 0%, 100%, 1)");
+        gradient.addColorStop(1, "HSLA(240, 50%, 90%, 0)");
+
+        crc2.save();
+        crc2.scale(randomscale, randomscale);
+        crc2.beginPath();
+        crc2.translate(randomx, randomy);
+        crc2.fillStyle = gradient;
+        crc2.arc(0, 0, r2, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+        crc2.restore();
+    }
+
+}
+
+function drawhouse(_position: Vector): void {
+    console.log("Vogelhaus");
+
+    //Oberer Teil des Hauses
+
+    crc2.save();
+    crc2.beginPath();
+    crc2.translate(_position.x, _position.y);
+    crc2.moveTo(-80, 0);
+    crc2.lineTo(80, 0);
+    crc2.lineTo(80, -120);
+    crc2.lineTo(120, -120);
+    crc2.lineTo(0, -180);
+    crc2.lineTo(-120, -120);
+    crc2.lineTo(-80, -120);
+    crc2.fillStyle = "brown";
+    crc2.fill();
+    crc2.closePath();
+    crc2.restore();
+
+    //Unterer Teil des Hauses 
+    crc2.save();
+    crc2.beginPath();
+    crc2.translate(_position.x, _position.y);
+    crc2.moveTo(-8, 0);
+    crc2.lineTo(8, 0);
+    crc2.lineTo(8, 50);
+    crc2.lineTo(30, 110);
+    crc2.lineTo(26, 110);
+    crc2.lineTo(8, 80);
+    crc2.lineTo(5, 110);
+    crc2.lineTo(-5, 110);
+    crc2.lineTo(-8, 80);
+    crc2.lineTo(-26, 110);
+    crc2.lineTo(-30, 110);
+    crc2.lineTo(-8, 50);
+    crc2.fillStyle = "brown";
+    crc2.fill();
+    crc2.closePath();
+    crc2.restore();
+
+    let rhole: number = 32;
+    crc2.save();
+    crc2.beginPath();
+    crc2.translate(_position.x, _position.y);
+    crc2.fillStyle = "grey";
+    crc2.arc(0, -60, rhole, 0, 2 * Math.PI);
+    crc2.fill();
+    crc2.closePath();
+    crc2.restore();
+
+}
+
+
+function drawbirdflying(_position:Vector): void {
+
+    for (let index: number = 0; index < 10; index++) {
+        let positionx: number = Math.floor(Math.random() * (900 - 40) + 40);
+        let positiony: number = Math.floor(Math.random() * (200 - 20) + 20);
+        let randomscale: number = Math.floor(Math.random() * (3 - 0.5) + 0.5);
+
+        crc2.save();
+        crc2.beginPath();
+        crc2.translate(positionx, positiony);
+        crc2.scale(randomscale, randomscale);
+        crc2.moveTo(1, 0);
+        crc2.bezierCurveTo(8, -5, 15, -10, 20, -2);
+        crc2.moveTo(-1, 0);
+        crc2.bezierCurveTo(-8, -5, -15, -10, -20, -2);
+        crc2.stroke();
+        crc2.closePath();
+        crc2.restore();
+    }
+}
+
+//Funktion für Vögel auf dem Boden
+function drawbird(_position:Vector): void{
+    for (let index: number = 0; index < 9; index++) {
+        
+        let maxWidth: number = 800;                      
+        let minWidth: number = 100;
+        let minHeight: number = 515;
+        let maxHeight: number = 530;
+
+        let positionx: number = Math.floor(Math.random() * (maxWidth - minWidth) + minWidth);
+        let positiony: number = Math.floor(Math.random() * (maxHeight - minHeight) + minHeight);
+        
+        //Unterkörper
+        let radius2: number = 15;
+        crc2.beginPath();
+        crc2.arc(positionx , positiony , radius2, 0, 2 * Math.PI);
+        crc2.fillStyle = randomColor();
+        crc2.fill();
+        crc2.stroke();
+        crc2.closePath();
+
+        //Kopf
+        let radius: number = 10;
+        crc2.beginPath();
+        crc2.arc(positionx - 10, positiony - 10, radius, 0, 2 * Math.PI);
+        crc2.fillStyle = randomColor();
+        crc2.fill();
+        crc2.stroke();
+        crc2.closePath();
+
+
+        //Auge
+        let radius3: number = 1;
+        crc2.beginPath();
+        crc2.arc(positionx - 11, positiony -11 , radius3, 0, 2 * Math.PI);
+        crc2.fillStyle = "black";
+        crc2.fill();
+        crc2.stroke();
+        crc2.closePath();
+      
+        //Schnabel
+        crc2.beginPath();
+        crc2.moveTo(positionx -20, positiony - 10);
+        crc2.lineTo(positionx -25, positiony -5);
+        crc2.stroke();
+        crc2.closePath();
+
+        crc2.beginPath();
+        crc2.moveTo(positionx -19, positiony -5);
+        crc2.lineTo(positionx -25, positiony -5);
+        crc2.stroke();
+        crc2.closePath();
+       
+
+        //Bein
+        crc2.beginPath();
+        crc2.moveTo(positionx, positiony + 5);
+        crc2.lineTo(positionx, positiony + 20);
+        crc2.stroke();
+        crc2.closePath();
+
+        //Fuß
+        crc2.beginPath();
+        crc2.moveTo(positionx , positiony +20);
+        crc2.lineTo(positionx - 5, positiony + 20);
+        crc2.stroke();
+        crc2.closePath();
+
+        }
+   
+
+        }
+
+function drawbirdsitting(_position:Vector): void {
+   
+    let positionx: number = 800;
+    let positiony: number = 339;
     
 
+    //Unterkörper
+    let radius2: number = 12;
+    crc2.beginPath();
+    crc2.arc(positionx , positiony , radius2, 0, 2 * Math.PI);
+    crc2.fillStyle = randomColor();
+    crc2.fill();
+    crc2.stroke();
+    crc2.closePath();
 
-   
+    //Kopf
+    let radius: number = 10;
+    crc2.beginPath();
+    crc2.arc(positionx - 10, positiony - 10, radius, 0, 2 * Math.PI);
+    crc2.fillStyle = randomColor();
+    crc2.fill();
+    crc2.stroke();
+    crc2.closePath();
+
+
+    //Auge
+    let radius3: number = 1;
+    crc2.beginPath();
+    crc2.arc(positionx - 11, positiony -11 , radius3, 0, 2 * Math.PI);
+    crc2.fillStyle = "black";
+    crc2.fill();
+    crc2.stroke();
+    crc2.closePath();
+  
+    //Schnabel
+    crc2.beginPath();
+    crc2.moveTo(positionx -20, positiony - 10);
+    crc2.lineTo(positionx -25, positiony -5);
+    crc2.stroke();
+    crc2.closePath();
+
+    crc2.beginPath();
+    crc2.moveTo(positionx -19, positiony -5);
+    crc2.lineTo(positionx -25, positiony -5);
+    crc2.stroke();
+    crc2.closePath();
+
+    //Bein
+    crc2.beginPath();
+    crc2.moveTo(positionx, positiony + 5);
+    crc2.lineTo(positionx, positiony + 20);
+    crc2.stroke();
+    crc2.closePath();
+
+    //Fuß
+    crc2.beginPath();
+    crc2.moveTo(positionx , positiony +20);
+    crc2.lineTo(positionx - 5, positiony + 20);
+    crc2.stroke();
+    crc2.closePath();
+
+
+ }  
+
+//Funktion zufällige Farbe 
+ function randomColor(): string {
+    let letters: string = "0123456789";
+    let color: string = "#";
+    for (let i: number = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 10)];
+    }
+    return color;
+
+
+
+
 }
+
+}
+
