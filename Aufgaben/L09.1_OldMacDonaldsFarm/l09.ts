@@ -1,3 +1,12 @@
+/*
+ Aufgabe:L09.1_OldMacDonaldsFarm
+ Name: Pia Giovannelli
+ Matrikel: 271245
+ Datum: 8.12.22
+ Quellen: Aanya Khetarpal, Havva Kilic, Julia Befus, Paula Jordans
+*/
+
+
 namespace Farm {
 
     class Animal {
