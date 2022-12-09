@@ -6,6 +6,9 @@ body{
 
     font-weight: bold;
     margin-top: -20px;
+    background-color: rgb(134, 88, 73);
+    border-radius: 5px;
+    width: 105px;
 }
 
 h1{
@@ -29,6 +32,13 @@ h1{
    left: 100px;
    top: -40px;
    border-color: rgb(255, 255, 255);
-   background-color: rgb(123, 84, 70);
+   background-color: rgb(134, 88, 73);
+   font-weight: bold;
    
+   
+}
+
+button:hover {
+    transform: scale(1.15);
+    transition: 0.3s;
 }
