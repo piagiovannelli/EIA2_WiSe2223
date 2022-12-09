@@ -1,14 +1,33 @@
 body{
-    background-color: rgb(139, 104, 82);
+    background-color: rgb(177, 145, 124);
     }
 
 #inventory{
 
     font-weight: bold;
+    margin-top: -20px;
 }
 
 h1{
 
     font-family: fantasy;
+    position: relative;
+    right: 115px;
 }
 
+#farm {
+  
+    position: relative;
+    left: 400px;
+    top: 10px;
+
+}
+
+#nextDay{
+
+   position: relative;
+   left: 115px;
+   border-color: rgb(255, 255, 255);
+   background-color: rgb(166, 91, 91);
+   margin-bottom: 30px;
+}
