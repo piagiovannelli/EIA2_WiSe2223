@@ -26,8 +26,9 @@ h1{
 #nextDay{
 
    position: relative;
-   left: 115px;
+   left: 100px;
+   top: -40px;
    border-color: rgb(255, 255, 255);
-   background-color: rgb(166, 91, 91);
-   margin-bottom: 30px;
+   background-color: rgb(123, 84, 70);
+   
 }
