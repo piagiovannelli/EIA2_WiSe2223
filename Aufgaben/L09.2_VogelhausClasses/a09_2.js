@@ -1,3 +1,10 @@
+/*
+ Aufgabe:L09.2_VogelhausClasses
+ Name: Pia Giovannelli
+ Matrikel: 271245
+ Datum: 17.12.22
+ Quellen: Aanya Khetarpal, Havva Kilic, Julia Befus, Paula Jordans, Lisa Blindenhöfer
+*/
 var a09_2_Vogelhaus;
 (function (a09_2_Vogelhaus) {
     window.addEventListener("load", handleload);
