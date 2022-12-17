@@ -73,7 +73,7 @@ var Vogelhaus;
     function drawCloud(_position, _size) {
         // Basispartikel erstellen und färben
         let nParticles = 40;
-        let radiusParticle = 20;
+        let radiusParticle = 60;
         let particle = new Path2D();
         particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
         let gradient = Vogelhaus.crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);

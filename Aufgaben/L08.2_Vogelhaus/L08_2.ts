@@ -105,7 +105,7 @@ namespace Vogelhaus {
 
         // Basispartikel erstellen und färben
         let nParticles: number = 40;
-        let radiusParticle: number = 20;
+        let radiusParticle: number = 60;
         let particle: Path2D = new Path2D();
         particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
 
@@ -132,7 +132,7 @@ namespace Vogelhaus {
         crc2.restore();
     }
 
-    function drawMountains(_position: Vector, _min: number, _max: number, _colorLow: string, _colorHigh: string): void { // Jirka / modified
+    function drawMountains(_position: Vector, _min: number, _max: number, _colorLow: string, _colorHigh: string): void { 
 
         // Abstand zwischen Berggipfeln und Tälern
         let stepMin: number = 10;
