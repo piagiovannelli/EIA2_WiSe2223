@@ -1,9 +1,9 @@
 /*
-Aufgabe: 10.2
+Aufgabe: 10.2_Polymorphie
 Name: Paula Jordans
-Matrikel Nr.: 271121
+Matrikel Nr.: 271245
 Datum: 14.01.2023
-Quellen: Lisa Blindenhöfer, Havva Kilic, Julia Befus, Aanya Khetarpal, Pia Giovannelli
+Quellen: Paula Jordans, Havva Kilic, Julia Befus, Aanya Khetarpal, Lisa Blindenhöfer
 */
 var a10_2_polymorphie;
 (function (a10_2_polymorphie) {
